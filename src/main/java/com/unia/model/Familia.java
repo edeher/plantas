@@ -1,5 +1,6 @@
 package com.unia.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="familia")
-public class Familia {
+public class Familia implements Serializable{
 	
 	
 	@Id

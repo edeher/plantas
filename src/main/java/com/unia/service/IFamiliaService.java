@@ -1,5 +1,7 @@
 package com.unia.service;
 
-public interface IFamiliaService {
+import com.unia.model.Familia;
+
+public interface IFamiliaService extends IService<Familia>{
 
 }

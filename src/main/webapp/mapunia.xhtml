@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<ui:composition template="/WEB-INF/templates/plantilla.xhtml">
+
+		<ui:define name="content">
+		<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+			<h:form id="frm">
+				
+				<p:growl id="growl" life="3000" />
+ 
+    <p:gmap id="gmap" center="-8.437746,-74.590658" zoom="20" type="HYBRID" style="width:100%;height:400px" model="#{mapBean.polylineModel}">
+        <p:ajax event="overlaySelect" listener="#{mapBean.onPolylineSelect}" update="growl" />
+    </p:gmap>  
+
+
+			</h:form>
+
+		</ui:define>
+
+
+	</ui:composition>
+
+</body>
+</html>

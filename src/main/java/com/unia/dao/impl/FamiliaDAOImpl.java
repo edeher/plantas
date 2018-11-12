@@ -1,5 +1,6 @@
 package com.unia.dao.impl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import com.unia.dao.IFamiliaDAO;
 import com.unia.model.Familia;
 
 @Stateless
-public class FamiliaDAOImpl implements IFamiliaDAO{
+public class FamiliaDAOImpl implements IFamiliaDAO,Serializable{
 	
 	@PersistenceContext(unitName="Plantas")
 	private EntityManager em;

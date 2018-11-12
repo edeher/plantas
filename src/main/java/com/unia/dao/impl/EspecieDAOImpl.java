@@ -1,5 +1,6 @@
 package com.unia.dao.impl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import com.unia.model.Especie;
 import com.unia.model.Familia;
 
 @Stateless
-public class EspecieDAOImpl implements IEspecieDAO{
+public class EspecieDAOImpl implements IEspecieDAO, Serializable{
 	
 	@PersistenceContext(unitName = "Plantas")
 	private EntityManager em;
