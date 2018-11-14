@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="especie")
-public class Especie implements Serializable{
+public class individuo implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -26,7 +26,14 @@ public class Especie implements Serializable{
 	@Column(name = "nombreComun", length = 50, nullable = false)
 	private String nombreComun;
 	
+	@Column(name = "tipo", length = 20, nullable = false)
+	private String tipo;
 	
+	@Column(name="latitud", columnDefinition="Decimal(10,4)", nullable=false)
+	private double latitud;
+	
+	@Column(name="longitud", columnDefinition="Decimal(10,4)", nullable=false)
+	private double longitud;
 	
 	@ManyToOne
 	@JoinColumn(name="idFamilia", nullable=false)
@@ -56,7 +63,29 @@ public class Especie implements Serializable{
 		this.nombreComun = nombreComun;
 	}
 
-	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public double getLatitud() {
+		return latitud;
+	}
+
+	public void setLatitud(double latitud) {
+		this.latitud = latitud;
+	}
+
+	public double getLongitud() {
+		return longitud;
+	}
+
+	public void setLongitud(double longitud) {
+		this.longitud = longitud;
+	}
 
 	public Familia getFamilia() {
 		return familia;
@@ -82,7 +111,7 @@ public class Especie implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Especie other = (Especie) obj;
+		individuo other = (individuo) obj;
 		if (idEspecie != other.idEspecie)
 			return false;
 		return true;
