@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.inject.Named;
 
 import com.unia.dao.IEspecieDAO;
 import com.unia.model.Especie;
 import com.unia.model.Familia;
 import com.unia.service.IEspecieService;
 
+@Named
 public class EspecieServiceImpl implements IEspecieService, Serializable{
 
 	
@@ -53,10 +55,6 @@ public class EspecieServiceImpl implements IEspecieService, Serializable{
 		return dao.listarPorNombreCientifico(e);
 	}
 
-	@Override
-	public List<Especie> listarPorNombreComun(Especie e) throws Exception {
-		
-		return dao.listarPorNombreComun(e);
-	}
+	
 
 }

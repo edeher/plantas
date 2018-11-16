@@ -80,17 +80,6 @@ public class EspecieDAOImpl implements IEspecieDAO, Serializable{
 		return lista;
 	}
 
-	@Override
-	public List<Especie> listarPorNombreComun(Especie e) throws Exception {
-		 List<Especie> lista=null;
-			
-			Query q= em.createQuery("FROM  Especie e where e.nombreComun=?1");
-			q.setParameter(1, e.getNombreComun());
-			
-			lista=(List<Especie>)q.getResultList();
-			
-					
-			return lista;
-	}
+	
 
 }

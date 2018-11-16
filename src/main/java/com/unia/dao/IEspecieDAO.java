@@ -12,5 +12,5 @@ public interface IEspecieDAO extends IDAO<Especie>{
 	
 	List<Especie> listarPorFamilia(Familia f)throws Exception;
 	List<Especie> listarPorNombreCientifico(Especie e)throws Exception;
-	List<Especie> listarPorNombreComun(Especie e)throws Exception;
+	
 }

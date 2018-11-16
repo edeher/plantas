@@ -1,14 +1,18 @@
 package com.unia.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,17 +24,16 @@ public class Especie implements Serializable{
 	private int idEspecie;
 	
 	
-	@Column(name = "nombreCientifico", length = 50, nullable = false)
+	@Column(name = "nombreCientifico", length = 100, nullable = false)
 	private String nombreCientifico;
-	
-	@Column(name = "nombreComun", length = 50, nullable = false)
-	private String nombreComun;
-	
-	
 	
 	@ManyToOne
 	@JoinColumn(name="idFamilia", nullable=false)
 	private Familia familia;
+	
+	@OneToMany(mappedBy = "especie", cascade = { CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.REMOVE }, fetch = FetchType.LAZY, orphanRemoval = true)
+	private List<Individuo> individuo;
 
 	public int getIdEspecie() {
 		return idEspecie;
@@ -47,16 +50,6 @@ public class Especie implements Serializable{
 	public void setNombreCientifico(String nombreCientifico) {
 		this.nombreCientifico = nombreCientifico;
 	}
-
-	public String getNombreComun() {
-		return nombreComun;
-	}
-
-	public void setNombreComun(String nombreComun) {
-		this.nombreComun = nombreComun;
-	}
-
-	
 
 	public Familia getFamilia() {
 		return familia;
