@@ -35,10 +35,11 @@ public class FamiliaServiceImpl implements IFamiliaService, Serializable{
 		return dao.listar();
 	}
 
+
 	@Override
-	public Familia listarPordId(Familia t) throws Exception {
-	
-		return dao.listarPordId(t);
+	public Familia listarPorId(Familia t) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

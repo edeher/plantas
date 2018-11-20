@@ -36,7 +36,7 @@ public class IndividuoServiceImpl implements IIndividuoService,Serializable{
 	}
 
 	@Override
-	public Individuo listarPordId(Individuo t) throws Exception {
+	public Individuo listarPorId(Individuo t) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.listarPordId(t);
 	}

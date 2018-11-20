@@ -40,8 +40,8 @@
 					
 					<h:panelGroup layout="block" style="float:left">
 						<p:commandButton value="Buscar por Familia"
-							actionListener="#{individuoBean.listarIndividuoFamilia(fa)}" ajax="false"
-							action="index?faces-redirect=true" />
+							actionListener="#{individuoBean.listarIndividuoFamilia()}" ajax="false"
+							update="dtIndividuo" />
 
 					</h:panelGroup>
 
@@ -62,7 +62,7 @@
 					
 					<h:panelGroup layout="block" style="float:left">
 						<p:commandButton value="Buscar por Especie"
-							actionListener="#{individuoBean.listarIndividuoEspecie(es) }"
+							actionListener="#{individuoBean.listarIndividuoEspecie()}" ajax="false"
 							update="dtIndividuo" />
 
 					</h:panelGroup>
@@ -72,7 +72,7 @@
 
 					<h:panelGroup layout="block" style="float:left">
 						<p:commandButton value="Restablecer"
-							actionListener="#{individuoBean.listarIndividuo2()}"
+							actionListener="#{individuoBean.listarIndividuo()}"
 							update="dtIndividuo" />
 
 					</h:panelGroup>
@@ -84,7 +84,7 @@
 					paginatorTemplate="{CurrentPageReport} 
                  {FirstPageLink} {PreviousPageLink}
                   {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
-					rowsPerPageTemplate="5,10,18" style="margin-bottom:20px">
+					rowsPerPageTemplate="5,10,18,100" style="margin-bottom:20px">
 
 					<f:facet name="header">
 						<p:outputPanel>

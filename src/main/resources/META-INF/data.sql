@@ -184,7 +184,7 @@ insert into especie (nombreCientifico,idFamilia) values('	Ipomoea carnea Jacq.	 
 insert into especie (nombreCientifico,idFamilia) values('	Ixora coccinea L. 	 ',	55	)
 insert into especie (nombreCientifico,idFamilia) values('	Jacaranda glabra (DC.) Bureau & K.Schum.	 ',	9	)
 insert into especie (nombreCientifico,idFamilia) values('	Jatropha gossypiifolia L.	 ',	24	)
-insert into especie (nombreCientifico,idFamilia) values('	Laetia corymbulosa Spruce ex Benth.Â	 ',	57	)
+insert into especie (nombreCientifico,idFamilia) values('	Laetia corymbulosa Spruce ex Benth.	 ',	57	)
 insert into especie (nombreCientifico,idFamilia) values('	Lagerstroemia indica L.	 ',	31	)
 insert into especie (nombreCientifico,idFamilia) values('	Licania sp.	 ',	18	)
 insert into especie (nombreCientifico,idFamilia) values('	Licania octandra (Hoffmanns. ex Schult.) Kuntze	 ',	18	)

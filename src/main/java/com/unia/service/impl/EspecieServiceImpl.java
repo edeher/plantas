@@ -37,11 +37,7 @@ public class EspecieServiceImpl implements IEspecieService, Serializable{
 		return dao.listar();
 	}
 
-	@Override
-	public Especie listarPordId(Especie t) throws Exception {
 	
-		return dao.listarPordId(t);
-	}
 
 	@Override
 	public List<Especie> listarPorFamilia(Familia f) throws Exception {
@@ -53,6 +49,12 @@ public class EspecieServiceImpl implements IEspecieService, Serializable{
 	public List<Especie> listarPorNombreCientifico(Especie e) throws Exception {
 		
 		return dao.listarPorNombreCientifico(e);
+	}
+
+	@Override
+	public Especie listarPorId(Especie t) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

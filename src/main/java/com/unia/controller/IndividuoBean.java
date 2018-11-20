@@ -53,8 +53,9 @@ public class IndividuoBean implements Serializable {
 	}
 //listoprobando cambiabdo todo
 	public void listarIndividuo() {
+		
 		try {
-
+			
 			lstIndividuo = serviceindividuo.listar();
 			
 		} catch (Exception e) {
@@ -62,31 +63,24 @@ public class IndividuoBean implements Serializable {
 		}
 
 	}
-	public void listarIndividuo2() {
+	
+
+	public void listarIndividuoEspecie() {
+		
 		try {
-
-			lstIndividuo = serviceindividuo.listar();
-			this.listarIndividuo();
-		} catch (Exception e) {
-			MensajeManager.mostrarMensaje("Aviso", e.getMessage(), "FATAL");
-		}
-
-	}
-
-	public void listarIndividuoEspecie(Especie es) {
-		try {
-
-			lstIndividuo = serviceindividuo.listarPorEspecie(es);
-			this.listarIndividuo();
+			
+			lstIndividuo = serviceindividuo.listarPorEspecie(especie);
+			
 		} catch (Exception e) {
 			MensajeManager.mostrarMensaje("Aviso", e.getMessage(), "FATAL");
 		}
 	}
 
-	public void listarIndividuoFamilia(Familia fa) {
+	public void listarIndividuoFamilia() {
+	
 		try {
-
-			lstIndividuo = serviceindividuo.listarPorFamilia(fa.getIdFamilia());
+			
+			lstIndividuo = serviceindividuo.listarPorFamilia(familia.getIdFamilia());
 		} catch (Exception e) {
 			MensajeManager.mostrarMensaje("Aviso", e.getMessage(), "FATAL");
 		}
