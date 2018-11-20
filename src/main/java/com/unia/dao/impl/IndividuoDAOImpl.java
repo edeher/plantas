@@ -71,11 +71,11 @@ public class IndividuoDAOImpl implements IIndividuoDAO, Serializable{
 	}
 
 	@Override
-	public List<Individuo> listarPorFamilia(Especie e) throws Exception {
+	public List<Individuo> listarPorFamilia(int idFamilia) throws Exception {
 		List<Individuo> lista=null;
 		
 		Query q= em.createQuery("FROM Individuo i where  i.especie.idFamilia=?1");
-		q.setParameter(1,e.getFamilia().getIdFamilia() );
+		q.setParameter(1,idFamilia);
 		
 		lista=(List<Individuo>)q.getResultList();
 		

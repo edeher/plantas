@@ -8,6 +8,6 @@ import com.unia.model.Individuo;
 public interface IIndividuoService extends IService<Individuo>{
 	
 	List<Individuo> listarPorEspecie(Especie e)throws Exception;
-	List<Individuo> listarPorFamilia(Especie e)throws Exception;
+	List<Individuo> listarPorFamilia(int idFamilia)throws Exception;
 	List<Individuo> listarPorNomComun(Individuo i)throws Exception;
 }

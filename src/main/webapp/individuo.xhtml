@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<style type="text/css">
+.ui-paginator a {
+	margin-right: 5px;
+}
+
+.noBorders tr, .noBorders td {
+	background: none !important;
+	border: none !important;
+}
+</style>
+</h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/plantilla.xhtml">
+		<ui:define name="content">
+			<p:messages id="msj" autoUpdate="true" showDetail="true"
+				globalOnly="true" closable="true" />
+
+
+			<h:form id="frm">
+
+				<p:panelGrid columns="2" columnClasses="no-border, no-border">
+					
+						<p:selectOneMenu id="cboFamilia" value="#{individuoBean.familia}"
+							converter="omnifaces.SelectItemsConverter">
+							<f:selectItem itemLabel="--seleccione--" itemValue="#{null}"
+								noSelectionOption="true" />
+							<f:selectItems value="#{individuoBean.lstFamilia }" var="fa"
+								itemLabel="#{fa.nombre}" itemValue="#{fa}" />
+
+						</p:selectOneMenu>
+					
+					<h:panelGroup layout="block" style="float:left">
+						<p:commandButton value="Buscar por Familia"
+							actionListener="#{individuoBean.listarIndividuoFamilia(fa)}" ajax="false"
+							action="index?faces-redirect=true" />
+
+					</h:panelGroup>
+
+				</p:panelGrid>
+
+				<p:panelGrid columns="2" columnClasses="no-border, no-border">
+					
+
+						<p:selectOneMenu id="cboEspecie" value="#{individuoBean.especie}"
+							converter="omnifaces.SelectItemsConverter">
+							<f:selectItem itemLabel="--seleccione--" itemValue="#{null}"
+								noSelectionOption="true" />
+							<f:selectItems value="#{individuoBean.lstEspecie}" var="es"
+								itemLabel="#{es.nombreCientifico}" itemValue="#{es}" />
+
+						</p:selectOneMenu>
+
+					
+					<h:panelGroup layout="block" style="float:left">
+						<p:commandButton value="Buscar por Especie"
+							actionListener="#{individuoBean.listarIndividuoEspecie(es) }"
+							update="dtIndividuo" />
+
+					</h:panelGroup>
+				</p:panelGrid>
+
+				<p:panelGrid columns="1" columnClasses="no-border, no-border">
+
+					<h:panelGroup layout="block" style="float:left">
+						<p:commandButton value="Restablecer"
+							actionListener="#{individuoBean.listarIndividuo2()}"
+							update="dtIndividuo" />
+
+					</h:panelGroup>
+				</p:panelGrid>
+
+				<p:dataTable id="dtIndividuo" widgetVar="formatosTable"
+					value="#{individuoBean.lstIndividuo}" var="in" rows="18"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} 
+                 {FirstPageLink} {PreviousPageLink}
+                  {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
+					rowsPerPageTemplate="5,10,18" style="margin-bottom:20px">
+
+					<f:facet name="header">
+						<p:outputPanel>
+							<h:outputText value="Buscar:" />
+							<p:inputText id="globalFilter"
+								onkeyup="buscarFiltros('formatosTable', this);"
+								style="width:150px" placeholder="Ingrese una palabra" />
+						</p:outputPanel>
+
+						<div style="float: right; padding-top: 5px;">
+							<h:commandLink>
+								<p:graphicImage name="/images/exel.jpg" width="24" />
+								<p:dataExporter type="xls" target="dtIndividuo"
+									fileName="individuos" />
+							</h:commandLink>
+
+							<h:commandLink>
+								<p:graphicImage name="/images/pdf.jpg" width="24" />
+								<p:dataExporter type="pdf" target="dtIndividuo"
+									fileName="individuos" />
+							</h:commandLink>
+
+						</div>
+
+
+					</f:facet>
+
+					<p:column headerText="id" style="width:5px"
+						filterBy="#{in.idIndividuo}" filterMatchMode="contains"
+						filterStyle="display:none">
+						<p:outputLabel value="#{in.idIndividuo}" />
+					</p:column>
+					<p:column headerText="nombre" style="width:40px"
+						filterBy="#{in.nombreComun}" filterMatchMode="contains"
+						filterStyle="display:none">
+						<p:outputLabel value="#{in.nombreComun}" />
+					</p:column>
+					<p:column headerText="especie" style="width:40px"
+						filterBy="#{in.especie.nombreCientifico}"
+						filterMatchMode="contains" filterStyle="display:none">
+						<p:outputLabel value="#{in.especie.nombreCientifico}" />
+					</p:column>
+					<p:column headerText="familia" style="width:15px"
+						filterBy="#{in.especie.familia.nombre}" filterMatchMode="contains"
+						filterStyle="display:none">
+						<p:outputLabel value="#{in.especie.familia.nombre}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:form>
+
+
+		</ui:define>
+
+	</ui:composition>
+
+</body>
+</html>

@@ -48,9 +48,9 @@ public class IndividuoServiceImpl implements IIndividuoService,Serializable{
 	}
 
 	@Override
-	public List<Individuo> listarPorFamilia(Especie e) throws Exception {
+	public List<Individuo> listarPorFamilia(int idFamilia) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.listarPorFamilia(e);
+		return dao.listarPorFamilia(idFamilia);
 	}
 
 	@Override
