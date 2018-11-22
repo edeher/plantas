@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/plantilla.xhtml">
+
+		<ui:define name="content">
+
+			<script type="text/javascript"
+				src="https://maps.google.com/maps/api/js?sensor=false"></script>
+
+			<h:form prependId="false">
+
+				<p:panelGrid columns="2" columnClasses="no-border, no-border">
+
+					<p:selectOneMenu id="cboFamilia" value="#{individuosGmapBean.familia}"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem itemLabel="--seleccione--" itemValue="#{null}"
+							noSelectionOption="true" />
+						<f:selectItems value="#{individuosGmapBean.lstFamilia }" var="fa"
+							itemLabel="#{fa.nombre}" itemValue="#{fa}" />
+
+					</p:selectOneMenu>
+
+					<h:panelGroup layout="block" style="float:left">
+						<p:commandButton value="Buscar por Familia"
+							actionListener="#{individuosGmapBean.listarIndividuoFamilia()}"
+							ajax="false" update="gmap" />
+
+					</h:panelGroup>
+
+				</p:panelGrid>
+
+				<p:panelGrid columns="2" columnClasses="no-border, no-border">
+
+
+					<p:selectOneMenu id="cboEspecie" value="#{individuosGmapBean.especie}"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem itemLabel="--seleccione--" itemValue="#{null}"
+							noSelectionOption="true" />
+						<f:selectItems value="#{individuosGmapBean.lstEspecie}" var="es"
+							itemLabel="#{es.nombreCientifico}" itemValue="#{es}" />
+
+					</p:selectOneMenu>
+
+
+					<h:panelGroup layout="block" style="float:left">
+						<p:commandButton value="Buscar por Especie"
+							actionListener="#{individuosGmapBean.listarIndividuoEspecie()}"
+							ajax="false" update="gmap" />
+
+					</h:panelGroup>
+				</p:panelGrid>
+
+				<p:panelGrid columns="1" columnClasses="no-border, no-border">
+
+					<h:panelGroup layout="block" style="float:left">
+						<p:commandButton value="Restablecer"
+							actionListener="#{individuosGmapBean.listarIndividuo()}"
+							update="gmap" />
+
+					</h:panelGroup>
+				</p:panelGrid>
+
+
+
+
+				<p:gmap id="gmap" center="-8.347441,-74.588199" zoom="16"
+					type="ROADMAP" style="width:100%;height:600px"
+					model="#{individuosGmapBean.advancedModel}" streetView="true">
+
+					<p:ajax event="overlaySelect" listener="#{individuosGmapBean.onMarkerSelect}"/>
+
+					<p:gmapInfoWindow id="infoWindow">
+
+						<p:outputPanel
+							style="text-align: center; display: block; margin: auto">
+
+							<p:graphicImage name="/images/#{individuosGmapBean.marker.data}" />
+
+							<br />
+							<h:outputText value="#{individuosGmapBean.marker.title}"/>
+
+						</p:outputPanel>
+
+
+					</p:gmapInfoWindow>
+
+
+				</p:gmap>
+
+
+
+			</h:form>
+
+
+
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

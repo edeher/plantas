@@ -18,19 +18,20 @@
 			closable="false" resizable="false" showHeader="false">
 			<p:graphicImage library="images" name="load.gif" />
 		</p:dialog>
-		
+
 		<p:growl autoUpdate="true" showDetail="true" />
-		
+
 		<h:form id="frmMenu">
 			<p:menubar autoDisplay="false">
-			
+
 				<p:menuitem icon="ui-icon-home" value="Individuos"
 					action="individuo?faces-redirect=true"></p:menuitem>
 
 				<p:menuitem icon="ui-icon-home" value="MAPA UNIA"
 					action="mapunia?faces-redirect=true"></p:menuitem>
 
-
+				<p:menuitem icon="ui-icon-home" value="ubicacion de Individuos"
+					action="individuosgmap?faces-redirect=true"></p:menuitem>
 
 				<f:facet name="options">
 					<h:panelGrid columns="2">
@@ -38,7 +39,7 @@
 						<p:commandButton icon="ui-icon-gear" />
 					</h:panelGrid>
 				</f:facet>
-				
+
 
 			</p:menubar>
 

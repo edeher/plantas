@@ -25,8 +25,8 @@ public class Individuo implements Serializable{
 	@Column(name="altura", columnDefinition="Decimal(10,2)", nullable=false)
 	private double altura;
 	
-	@Column(name="dap", columnDefinition="Decimal(10,2)", nullable=false)
-	private double dap;
+	@Column(name="circunferencia", columnDefinition="Decimal(10,6)", nullable=false)
+	private double circunferencia;
 	
 	@Column(name = "ubicacion", length = 15, nullable = false)
 	private String ubicacion;
@@ -78,12 +78,14 @@ public class Individuo implements Serializable{
 		this.altura = altura;
 	}
 
-	public double getDap() {
-		return dap;
+	
+
+	public double getCircunferencia() {
+		return circunferencia;
 	}
 
-	public void setDap(double dap) {
-		this.dap = dap;
+	public void setCircunferencia(double circunferencia) {
+		this.circunferencia = circunferencia;
 	}
 
 	public String getUbicacion() {
