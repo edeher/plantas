@@ -8,5 +8,5 @@ public interface IDAO <T> {
 	void modificar (T t)throws Exception;
 	List<T> listar() throws Exception;
 	T listarPordId(T t)throws Exception;
-
+	
 }

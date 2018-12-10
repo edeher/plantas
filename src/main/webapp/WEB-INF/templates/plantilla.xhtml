@@ -8,6 +8,8 @@
 <h:head>
 	<h:outputScript name="script.js" library="js" />
 	<h:outputScript name="calendar.js" library="js" />
+	<f:event type="preRenderView"
+		listener="#{plantillaBean.verificarSesion()}" />
 </h:head>
 <body>
 	<ui:insert name="header">
@@ -22,23 +24,24 @@
 		<p:growl autoUpdate="true" showDetail="true" />
 
 		<h:form id="frmMenu">
-			<p:menubar autoDisplay="false">
-
-				<p:menuitem icon="ui-icon-home" value="Individuos"
-					action="individuo?faces-redirect=true"></p:menuitem>
-
-				<p:menuitem icon="ui-icon-home" value="MAPA UNIA"
-					action="mapunia?faces-redirect=true"></p:menuitem>
-
-				<p:menuitem icon="ui-icon-home" value="ubicacion de Individuos"
-					action="individuosgmap?faces-redirect=true"></p:menuitem>
+			<p:menubar model="#{menuBean.model}">
 
 				<f:facet name="options">
-					<h:panelGrid columns="2">
+
+					<h:panelGrid columns="3">
+
 						<p:clock pattern="h:mm:ss a dd/MM/yyyy" mode="server" />
-						<p:commandButton icon="ui-icon-gear" />
+
+					
+						<p:commandButton id="buton1" actionListener="#{menuBean.cerrarSesion()}"
+							icon="ui-icon-power" action="index?faces-redirect=true"
+							 />
+							<p:tooltip id="toolTipGrow3" for="buton1" value="Cerrar Sesion"
+						showEffect="clip" hideEffect="explode" trackMouse="true"/>
 					</h:panelGrid>
+
 				</f:facet>
+
 
 
 			</p:menubar>

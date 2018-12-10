@@ -1,3 +1,13 @@
+insert into usuario(usuario,clave,tipo,estado) values('edeher','123','AD','AC')
+insert into usuario(usuario,clave,tipo,estado) values('rossetti','123','OP','AC')
+
+insert into menu(nombre,url,tipo,tipousuario,estado,idSubmenu) values('Notas',null,'S','OP','AC',null)
+insert into menu(nombre,url,tipo,tipousuario,estado,idSubmenu) values('Nuevo',null,'I','OP','AC',1)
+insert into menu(nombre,url,tipo,tipousuario,estado,idSubmenu) values('Buscar',null,'I','OP','AC',1)
+insert into menu(nombre,url,tipo,tipousuario,estado,idSubmenu) values('Individuos','individuo.xhtml','I','AD','AC',null)
+insert into menu(nombre,url,tipo,tipousuario,estado,idSubmenu) values('Mapa UNIA','mapunia.xhtml','I','AD','AC',null)
+insert into menu(nombre,url,tipo,tipousuario,estado,idSubmenu) values('Individuos en Mapa','individuosgmap.xhtml','I','AD','AC',null)
+
 insert into familia (nombre) values('	Anacardiaceae	')
 insert into familia (nombre) values('	Annonaceae	')
 insert into familia (nombre) values('	Apocynaceae	')
