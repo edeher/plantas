@@ -27,6 +27,12 @@ public class Especie implements Serializable{
 	@Column(name = "nombreCientifico", length = 100, nullable = false)
 	private String nombreCientifico;
 	
+	@Column(name = "numeroIndividuos", nullable = false)
+	private int numeroIndividuos;
+	
+	@Column(name = "areaIndividuos", columnDefinition="Decimal(10,2)", nullable=false)
+	private double areaIndividuos;
+		
 	@ManyToOne
 	@JoinColumn(name="idFamilia", nullable=false)
 	private Familia familia;

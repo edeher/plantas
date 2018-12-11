@@ -51,7 +51,7 @@ public class IndividuoBean implements Serializable {
 		this.listarFamilia();
 
 	}
-//listoprobando cambiabdo todo
+//listoprobando cambiando todo
 	public void listarIndividuo() {
 		
 		try {
@@ -103,6 +103,16 @@ public class IndividuoBean implements Serializable {
 		} catch (Exception e) {
 			MensajeManager.mostrarMensaje("Aviso", e.getMessage(), "FATAL");
 		}
+	}
+	public void numeroIndividuosEspecie() {
+		
+	}
+	
+	public void areaIndividuos() {
+		
+	}
+	public void numeroIndiviuosFamilia() {
+		
 	}
 
 	public Individuo getIndividuo() {
