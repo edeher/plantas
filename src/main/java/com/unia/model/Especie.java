@@ -65,6 +65,31 @@ public class Especie implements Serializable{
 		this.familia = familia;
 	}
 
+	
+	public int getNumeroIndividuos() {
+		return numeroIndividuos;
+	}
+
+	public void setNumeroIndividuos(int numeroIndividuos) {
+		this.numeroIndividuos = numeroIndividuos;
+	}
+
+	public double getAreaIndividuos() {
+		return areaIndividuos;
+	}
+
+	public void setAreaIndividuos(double areaIndividuos) {
+		this.areaIndividuos = areaIndividuos;
+	}
+
+	public List<Individuo> getIndividuo() {
+		return individuo;
+	}
+
+	public void setIndividuo(List<Individuo> individuo) {
+		this.individuo = individuo;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

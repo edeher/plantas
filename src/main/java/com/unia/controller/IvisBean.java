@@ -10,101 +10,112 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.unia.model.Especie;
-import com.unia.model.Familia;
 import com.unia.model.Individuo;
 import com.unia.service.IEspecieService;
-import com.unia.service.IFamiliaService;
 import com.unia.service.IIndividuoService;
 import com.unia.util.MensajeManager;
 
 @Named
 @ViewScoped
-public class IndividuoBean implements Serializable {
+public class IvisBean implements Serializable {
 
 	@Inject
 	private Individuo individuo;
 	@Inject
 	private Especie especie;
 	@Inject
-	private Familia familia;
-	@Inject
 	private IIndividuoService serviceindividuo;
 	@Inject
 	private IEspecieService serviceespecie;
-	@Inject
-	private IFamiliaService servicefamilia;
 
 	private List<Individuo> lstIndividuo;
-	private List<Individuo> lstIndividuoEspecie;
-	private List<Individuo> lstIndividuoFamilia;
+	private List<Individuo> lstIndividuo1;
 	private List<Especie> lstEspecie;
-	private List<Familia> lstFamilia;
 
 	@PostConstruct
 	public void init() {
 		lstIndividuo = new ArrayList<>();
 		lstEspecie = new ArrayList<>();
-		lstFamilia = new ArrayList<>();
-	
+
 		this.listarIndividuo();
 		this.listarEspecie();
-		this.listarFamilia();
+
+		this.listanumeroIndividuosEspecie();
 
 	}
-//listoprobando cambiando todo
+
 	public void listarIndividuo() {
-		
+
 		try {
-			
+
 			lstIndividuo = serviceindividuo.listar();
-			
+
 		} catch (Exception e) {
 			MensajeManager.mostrarMensaje("Aviso", e.getMessage(), "FATAL");
 		}
 
-	}
-	
-
-	public void listarIndividuoEspecie() {
-		
-		try {
-			
-			lstIndividuo = serviceindividuo.listarPorEspecie(especie);
-			
-		} catch (Exception e) {
-			MensajeManager.mostrarMensaje("Aviso", e.getMessage(), "FATAL");
-		}
-	}
-
-	public void listarIndividuoFamilia() {
-	
-		try {
-			
-			lstIndividuo = serviceindividuo.listarPorFamilia(familia.getIdFamilia());
-		} catch (Exception e) {
-			MensajeManager.mostrarMensaje("Aviso", e.getMessage(), "FATAL");
-		}
 	}
 
 	public void listarEspecie() {
+
+		try {
+
+			lstEspecie = serviceespecie.listar();
+
+		} catch (Exception e) {
+			MensajeManager.mostrarMensaje("Aviso", e.getMessage(), "FATAL");
+		}
+
+	}
+
+	public void listanumeroIndividuosEspecie() {
+
+		try {
+
+			for (Especie espe1 : this.lstEspecie) {
+
+				lstIndividuo1 = serviceindividuo.listarPorEspecie(espe1);
+
+				espe1.setNumeroIndividuos(lstIndividuo1.size());
+				serviceespecie.modificar(espe1);
+
+			}
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public void listaareaIndividuosEspecie() {
 		
 		try {
 
-			lstEspecie=serviceespecie.listar();
+			for (Especie espe2 : this.lstEspecie) {
+
+				double areas=0;
+				lstIndividuo1 = serviceindividuo.listarPorEspecie(espe2);
+
+				for(Individuo indi2:lstIndividuo1) {
+					
+					areas=areas+indi2.getCircunferencia();
+				}
+				
+				espe2.setAreaIndividuos(areas);
+				serviceespecie.modificar(espe2);
+
+			}
+
 		} catch (Exception e) {
-			MensajeManager.mostrarMensaje("Aviso", e.getMessage(), "FATAL");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
-	public void listarFamilia() {
-		try {
+	public void numeroIndiviuosFamilia() {
 
-			lstFamilia=servicefamilia.listar();
-		} catch (Exception e) {
-			MensajeManager.mostrarMensaje("Aviso", e.getMessage(), "FATAL");
-		}
 	}
-	
 
 	public Individuo getIndividuo() {
 		return individuo;
@@ -122,14 +133,6 @@ public class IndividuoBean implements Serializable {
 		this.especie = especie;
 	}
 
-	public Familia getFamilia() {
-		return familia;
-	}
-
-	public void setFamilia(Familia familia) {
-		this.familia = familia;
-	}
-
 	public List<Individuo> getLstIndividuo() {
 		return lstIndividuo;
 	}
@@ -144,30 +147,6 @@ public class IndividuoBean implements Serializable {
 
 	public void setLstEspecie(List<Especie> lstEspecie) {
 		this.lstEspecie = lstEspecie;
-	}
-
-	public List<Familia> getLstFamilia() {
-		return lstFamilia;
-	}
-
-	public void setLstFamilia(List<Familia> lstFamilia) {
-		this.lstFamilia = lstFamilia;
-	}
-
-	public List<Individuo> getLstIndividuoEspecie() {
-		return lstIndividuoEspecie;
-	}
-
-	public void setLstIndividuoEspecie(List<Individuo> lstIndividuoEspecie) {
-		this.lstIndividuoEspecie = lstIndividuoEspecie;
-	}
-
-	public List<Individuo> getLstIndividuoFamilia() {
-		return lstIndividuoFamilia;
-	}
-
-	public void setLstIndividuoFamilia(List<Individuo> lstIndividuoFamilia) {
-		this.lstIndividuoFamilia = lstIndividuoFamilia;
 	}
 
 }
